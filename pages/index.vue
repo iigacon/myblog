@@ -128,7 +128,7 @@ const post = {
 export default {
   async created() {
     serviceOptions.axios = axios.create({
-      baseURL: 'http://localhost:4000',
+      baseURL: 'http://151.106.125.56:3000',
     })
     const articles = await ArticlesService.articlesControllerFindAll({})
     console.log(articles)
