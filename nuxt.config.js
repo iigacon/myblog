@@ -63,12 +63,12 @@ export default {
     build: true,
     ssr: true
   },
-  server: {
-    host: '0', // default: localhost
-    // https: {
-    //   key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
-    //   cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
-    // }
-  },
-  ssr: false
+  // server: {
+  //   host: '0', // default: localhost
+  //   // https: {
+  //   //   key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+  //   //   cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
+  //   // }
+  // },
+  ssr: true
 }
