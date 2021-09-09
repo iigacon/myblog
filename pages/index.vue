@@ -68,14 +68,14 @@
       </div>
       <!--      body-->
       <div class="lg:pt-16 pt-8 " v-for="(post, name, index) in posts">
-        <div class="flex flex-col px-4 pb:4 lg:px-20 lg:pb-24 " v-if="post.type ==='post'">
+        <div class="flex flex-col px-4 pb:4 lg:px-20 lg:pb-24 " v-if="post.type !=='post'">
           <div class="flex flex-row justify-center pt-8 pb-2">
-            <div class="" v-for="tag in post.tags">
-              <NuxtLink class="link px-2 py-2" :to="tag.url" style="font-weight: 300; font-size: 12px">#{{ tag.name }}</NuxtLink>
+            <div class="" v-for="tag in post.tag">
+              <NuxtLink class="link px-2 py-2" :to="tag" style="font-weight: 300; font-size: 12px">#{{ tag }}</NuxtLink>
             </div>
           </div>
           <div class="w-20 h-0.5 bg-gray-100 self-center"/>
-          <NuxtLink :to="{path: '/' + post.id}"><span class="title text-center flex" style="font-weight: 300"> {{ post.title }}</span></NuxtLink>
+          <NuxtLink class="flex flex-row justify-center" :to="{path: '/' + post.id}"><span class="title text-center" > {{ post.title }}</span></NuxtLink>
           <div class="flex justify-center ">
             <div class="author">
               <span style="color: #bababa">Posted on <span style="color: #c8ab77">{{ $moment(post.publishedAt).format('DD/MM/YYYY') }}</span>&emsp;</span>
@@ -84,7 +84,8 @@
             </div>
           </div>
           <NuxtLink :to="{path: '/' + post.id}"><img class="py-8" :src="post.imgCover"/></NuxtLink>
-          <span v-html="post.briefContent"></span>
+          <span v-html="post.urlSound"></span>
+          <span v-html="post.content"></span>
           <NuxtLink :to="{path: '/' + post.id}"><span class="border-b pb-2" style=" color: #c8ab77; font-style: italic;font-family: lora,georgia,serif;
     font-weight: 400;">Continue reading →</span></NuxtLink>
         </div>
@@ -97,6 +98,9 @@
 
 <script lang="ts">
 import 'ant-design-vue/dist/antd.css';
+import {ArticlesService} from "~/services";
+import {serviceOptions, ServiceOptions} from "~/services/serviceOptions";
+import axios from 'axios';
 
 const post = {
   type: 'post',
@@ -122,20 +126,19 @@ const post = {
 }
 
 export default {
+  async created() {
+    serviceOptions.axios = axios.create({
+      baseURL: 'http://localhost:4000',
+    })
+    const articles = await ArticlesService.articlesControllerFindAll({})
+    console.log(articles)
+    this.posts = articles
+  },
   data: () => {
     return (
       {
         posts: [
-          post,
-          post,
-          post,
-          post,
-          post,
-          post,
-          post,
-          post,
-          post,
-          post,
+
         ]
       }
     )
@@ -188,7 +191,6 @@ li {
 
 .title {
   font-size: 2rem;
-  text-align: center;
   font-family: lora, georgia, serif;
   font-weight: 300;
   color: #4a4a4a;
