@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "nuxt dev",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "build": "nuxt generate",
-    "serve": "vite preview"
+    "build": "nuxt build"
   },
   "dependencies": {
     "@codekraft-studio/vue-record": "^0.0.3",
