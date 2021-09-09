@@ -26,7 +26,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    "@/plugins/antd-ui"
+    // "@/plugins/antd-ui"
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -38,8 +38,8 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    'nuxt-vite',
     '@nuxtjs/moment',
+    'nuxt-vite',
   ],
   // moment: {
   //   locales: ['en']
@@ -51,16 +51,17 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    loaders: {
-      less: {
-        lessOptions: {
-          javascriptEnabled: true,
-        },
-      },
-    },
+    // loaders: {
+    //   less: {
+    //     lessOptions: {
+    //       javascriptEnabled: true,
+    //     },
+    //   },
+    // },
   },
   vite: {
-    build: true
+    build: true,
+    ssr: true
   },
   server: {
     host: '0', // default: localhost
