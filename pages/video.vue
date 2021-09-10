@@ -141,14 +141,6 @@ export default {
     )
   },
   methods: {
-    itemRender(current, type, originalElement) {
-      // if (type === 'prev') {
-      //   return <>Previous</a>;
-      // } else if (type === 'next') {
-      //   return <a>Next</a>;
-      // }
-      return originalElement;
-    },
   },
 }
 </script>

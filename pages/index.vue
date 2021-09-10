@@ -96,10 +96,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import 'ant-design-vue/dist/antd.css';
+<script >
+// import 'ant-design-vue/dist/antd.css';
 import {ArticlesService} from "~/services";
-import {serviceOptions, ServiceOptions} from "~/services/serviceOptions";
+import {serviceOptions} from "~/services/serviceOptions";
 import axios from 'axios';
 
 const post = {
@@ -126,33 +126,30 @@ const post = {
 }
 
 export default {
-  async created() {
-    serviceOptions.axios = axios.create({
-      baseURL: 'http://151.106.125.56:3000',
-    })
-    const articles = await ArticlesService.articlesControllerFindAll({})
-    console.log(articles)
-    this.posts = articles
+  data() {
+    return {
+      posts: []
+    }
   },
-  data: () => {
-    return (
-      {
-        posts: [
-
-        ]
-      }
-    )
+  created () {
+    // fetch the data when the view is created and the data is
+    // already being observed
+    this.getData()
   },
   methods: {
-    itemRender(current, type, originalElement) {
-      // if (type === 'prev') {
-      //   return <>Previous</a>;
-      // } else if (type === 'next') {
-      //   return <a>Next</a>;
-      // }
-      return originalElement;
-    },
+     async getData(){
+      try{
+        serviceOptions.axios = axios.create({
+          baseURL: 'http://151.106.125.56:3000',
+        })
+        const articles = await ArticlesService.articlesControllerFindAll({})
+        console.log(articles)
+        this.posts = articles
+      }catch (e) {
+      }
+    }
   },
+
 }
 </script>
 

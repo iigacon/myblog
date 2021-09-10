@@ -96,7 +96,7 @@
 </template>
 
 <script lang="ts">
-import 'ant-design-vue/dist/antd.css';
+// import 'ant-design-vue/dist/antd.css';
 
 const post = {
   type: 'post',
@@ -141,14 +141,7 @@ export default {
     )
   },
   methods: {
-    itemRender(current, type, originalElement) {
-      // if (type === 'prev') {
-      //   return <>Previous</a>;
-      // } else if (type === 'next') {
-      //   return <a>Next</a>;
-      // }
-      return originalElement;
-    },
+
   },
 }
 </script>

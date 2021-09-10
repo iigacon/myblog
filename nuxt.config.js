@@ -70,5 +70,6 @@ export default {
   //   //   cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
   //   // }
   // },
-  ssr: true
+  ssr: true,
+  dev: process.env.NODE_ENV !== 'production'
 }
