@@ -21,12 +21,14 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    // '@/assets/css/global.css'
+    '@/assets/css/global.css',
+    '@/assets/css/ckEditor.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     // "@/plugins/antd-ui"
+    "@/plugins/ckeditor"
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -61,15 +63,15 @@ export default {
   },
   vite: {
     build: true,
-    ssr: true
+    ssr: false
   },
   // server: {
   //   host: '0', // default: localhost
-  //   // https: {
-  //   //   key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
-  //   //   cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
-  //   // }
+  //   https: {
+  //     key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+  //     cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
+  //   }
   // },
-  ssr: true,
+  ssr: false,
   dev: process.env.NODE_ENV !== 'production'
 }
